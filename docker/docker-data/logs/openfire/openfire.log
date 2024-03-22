@@ -1,0 +1,11 @@
+2024.03.22 05:40:55 [32mINFO [m [main]: org.jivesoftware.openfire.XMPPServer - Registering shutdown hook (standalone mode)
+2024.03.22 05:40:55 [32mINFO [m [main]: org.jivesoftware.util.cache.ConsistencyMonitor - Applying configuration for cache consistency check. Enabled: false
+2024.03.22 05:40:55 [32mINFO [m [main]: org.jivesoftware.openfire.XMPPServer - Openfire 4.7.6 Alpha [Mar 22, 2024, 5:40:55 AM]
+2024.03.22 05:40:55 [33mWARN [m [PluginMonitorTask-2]: org.jivesoftware.util.LocaleUtils - Missing resource for key: system_property.xmpp.xmlutil.parser.core-pool-size in locale en
+2024.03.22 05:40:55 [33mWARN [m [PluginMonitorTask-2]: org.jivesoftware.util.LocaleUtils - Missing resource for key: system_property.xmpp.xmlutil.parser.maximum-pool-size in locale en
+2024.03.22 05:40:55 [33mWARN [m [PluginMonitorTask-2]: org.jivesoftware.util.LocaleUtils - Missing resource for key: system_property.xmpp.xmlutil.parser.keep_alive_time in locale en
+2024.03.22 05:40:55 [33mWARN [m [PluginMonitorTask-2]: org.jivesoftware.openfire.container.AdminConsolePlugin - Admin console: CertificateStoreManager has not been initialized yet. HTTPS will be unavailable.
+2024.03.22 05:40:57 [32mINFO [m [PluginMonitorTask-2]: org.jivesoftware.util.cache.CacheFactory - Created cache [org.jivesoftware.util.cache.DefaultLocalCacheStrategy] for Favicon Misses
+2024.03.22 05:40:57 [32mINFO [m [PluginMonitorTask-2]: org.jivesoftware.util.cache.CacheFactory - Created cache [org.jivesoftware.util.cache.DefaultLocalCacheStrategy] for Favicon Hits
+2024.03.22 05:40:57 [32mINFO [m [PluginMonitorTask-2]: org.jivesoftware.openfire.container.AdminConsolePlugin - Admin console listening at http://43f6ea138918:9090
+2024.03.22 05:40:57 [32mINFO [m [PluginMonitorTask-2]: org.jivesoftware.openfire.container.PluginManager - Successfully loaded plugin 'admin'.
