@@ -1,0 +1,97 @@
+version: "3"
+
+services:
+  db:
+    image: "mariadb:10.6.15"
+    container_name: "db"
+    ports:
+      - "3306:3306"
+    volumes:
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+      - ./docker-data/mariadb/initdb.d:/docker-entrypoint-initdb.d
+      - ./docker-data/mariadb/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+  apacheds:
+    build:
+      context: ./apacheds
+    container_name: "apacheds"
+    ports:
+      - 10389:10389
+    depends_on:
+      - db
+
+  keycloak:
+    build:
+      context: ./keycloak
+    container_name: "keycloak"
+    environment:
+      - KC_DB=mariadb
+      - KC_DB_URL=jdbc:mariadb://db/keycloak?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+      - KC_DB_USERNAME=root
+      - KC_DB_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - KC_HOSTNAME_URL=${KC_HOSTNAME_URL}
+      - KC_HOSTNAME_ADMIN_URL=${KC_HOSTNAME_ADMIN_URL}
+      - KEYCLOAK_ADMIN=${KEYCLOAK_ADMIN}
+      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
+      - KEYCLOAK_SAME_SITE_COOKIES=true
+      - KC_PROXY_ADDRESS_FORWARDING=true
+      - KC_PROXY=edge
+      - KC_HTTP_ENABLED=true
+      - KC_HTTPS_PORT=443
+      - KC_HOSTNAME_STRICT_BACKCHANNEL=true
+      - vertx.disableFileCaching=true
+    volumes:
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+    ports:
+      - 8043:8080
+      - 8443:8443
+      - 10990:10990
+    depends_on:
+      - apacheds
+      - db
+
+  openfire:
+    image: okstarorg/okstar-openfire:v4.7
+    container_name: "openfire"
+    volumes:
+      # - ./logs/openfire:/usr/local/openfire/logs
+      - ./docker-data/logs/openfire:/var/log/openfire
+    ports:
+      - 3478:3478
+      - 3479:3479
+      - 5222:5222
+      - 5223:5223
+      - 5229:5229
+      - 5262:5262
+      - 5263:5263
+      - 5275:5275
+      - 5276:5276
+      - 7070:7070
+      - 7443:7443
+      - 7777:7777
+      - 9090:9090
+      - 9091:9091
+      - 5005:5005
+    depends_on:
+      - db
+      - apacheds
+
+  gateway:
+    image: "flytreeleft/nginx-gateway"
+    container_name: "gateway"
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./docker-data/nginx/logs:/var/log/nginx/sites
+      - ./docker-data/nginx/certs:/etc/letsencrypt
+      - ./docker-data/nginx/vhost.d:/etc/nginx/vhost.d
+      - ./docker-data/nginx/stream.d:/etc/nginx/stream.d
+      - ./docker-data/nginx/epage.d:/etc/nginx/epage.d
+    ports:
+      - 8080:80
+    depends_on:
+      - db
