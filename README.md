@@ -21,20 +21,21 @@ KC_HOSTNAME_URL=https://{your_ip_or_domain}
 KC_HOSTNAME_ADMIN_URL=https://{your_ip_or_domain}
 ```
 
-## 启动
+## Start docker dependencies 
 ```shell
 cd ok-stack-docker/docker/
 sudo docker-compose  up -d
 ```
 
-# 配置Keycloak
+# Setting Keycloak
  
   打开地址:`https://localhost:8443/`,默认用户名：admin、密码：okstar
 
 > 具体配置方法请参考：[Keycloak 配置](./docs/kc.md)
 
-# 配置openfire
+# Setting openfire
  
-  配置openfire连接到apacheds服务
+  配置openfire连接到数据库以及LDAP服务
+
 > 具体配置方法请参考：[Openfire 配置](./docs/of.md)
 
