@@ -9,7 +9,7 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone
       - /etc/localtime:/etc/localtime
-      - ./docker-data/mariadb/initdb.d:/docker-entrypoint-initdb.d
+      - ./mariadb/initdb.d:/docker-entrypoint-initdb.d
       - ./docker-data/mariadb/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
