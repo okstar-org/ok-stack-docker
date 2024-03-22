@@ -14,7 +14,7 @@ git clone https://github.com/okstar-org/ok-stack-docker.git
 ```
 
 ## Settings
-modify `.env` file
+modify `docker/.env` file
 ```shell
 # set you keycloak url
 KC_HOSTNAME_URL=https://{your_ip_or_domain}
