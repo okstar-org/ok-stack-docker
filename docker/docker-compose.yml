@@ -86,11 +86,11 @@ services:
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/localtime:/etc/localtime:ro
-      - ./docker-data/nginx/logs:/var/log/nginx/sites
-      - ./docker-data/nginx/certs:/etc/letsencrypt
-      - ./docker-data/nginx/vhost.d:/etc/nginx/vhost.d
-      - ./docker-data/nginx/stream.d:/etc/nginx/stream.d
-      - ./docker-data/nginx/epage.d:/etc/nginx/epage.d
+      - ./nginx/certs:/etc/letsencrypt
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/stream.d:/etc/nginx/stream.d
+      - ./nginx/epage.d:/etc/nginx/epage.d
+      - ./docker-data/nginx/logs:/var/log/nginx
     ports:
       - 8080:80
     depends_on:
