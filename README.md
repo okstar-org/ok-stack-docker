@@ -11,9 +11,27 @@ sudo apt-get install -y git docker docker-compose
 
 # clone
 git clone https://github.com/okstar-org/ok-stack-docker.git
-
-cd ok-stack-docker/docker/
-docker-compose up
 ```
+
+## Settings
+modify `.env` file
+```shell
+# set you keycloak url
+KC_HOSTNAME_URL=https://{your_ip_or_domain}
+KC_HOSTNAME_ADMIN_URL=https://{your_ip_or_domain}
+```
+
+## 启动
+```shell
+cd ok-stack-docker/docker/
+sudo docker-compose  up -d
+```
+
+# 登录
+ 
+ http://localhost:8043/
+    
+    用户名：admin
+    密码：okstar
 
 
