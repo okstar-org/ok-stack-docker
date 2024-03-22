@@ -1,5 +1,6 @@
 # Requirements
-> Ubuntu 20.04 +
+
+- Ubuntu 20.04 +
 ```shell
 sudo apt-get update
 sudo apt-get install -y git docker docker-compose
@@ -8,7 +9,6 @@ sudo apt-get install -y git docker docker-compose
 
 ## Clone the repo
 ```shell
-
 # clone
 git clone https://github.com/okstar-org/ok-stack-docker.git
 ```
@@ -27,11 +27,14 @@ cd ok-stack-docker/docker/
 sudo docker-compose  up -d
 ```
 
-# 登录
+# 配置Keycloak
  
- http://localhost:8043/
-    
-    用户名：admin
-    密码：okstar
+  打开地址:`https://localhost:8443/`,默认用户名：admin、密码：okstar
 
+> 具体配置方法请参考：[Keycloak 配置](./docs/kc.md)
+
+# 配置openfire
+ 
+  配置openfire连接到apacheds服务
+> 具体配置方法请参考：[Openfire 配置](./docs/of.md)
 
