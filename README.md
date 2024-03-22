@@ -1,11 +1,20 @@
 # Requirements
+    
+This project is an deployment project for OkStack, according to this project, you can fully deploy the entire OkStack project.
 
+## Support Platform
+- Arch: x64
 - Ubuntu 20.04 +
 ```shell
 sudo apt-get update
 sudo apt-get install -y git docker docker-compose
 ```
 
+- Fedora
+```
+sudo dnf update
+sudo dnf install git docker docker-compose
+```
 
 ## Clone the repo
 ```shell

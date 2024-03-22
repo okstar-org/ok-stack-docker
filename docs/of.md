@@ -1,6 +1,8 @@
 
 
-## 配置启动 Openfire 服务器
+# 配置启动 Openfire 服务器
+
+## 初始化
 > 打开服务器地址：`http://{openfire_host}/`
 - 第一步，选择合适的语言
 - 第二步，服务器设置不用修改
@@ -22,4 +24,21 @@
   - 输入管理员`okstar`和密码`okstar`。
   - 点击登录
 
-- 到此，配置成功！
+## 配置插件
+- 管理中心插件列表
+- 安装如下插件 :`Bookmarks`, `External Service Discovery`, `REST API`
+- 设置`External Service Discovery`插件，位置：[服务器]->[媒体服务]
+```
+    host                port     transport  type
+    stun.l.google.com 	19302 		udp 	stun
+ 	{your turn server} 	34780 		udp 	turn 
+```
+
+- 设置`REST API`插件，位置：[服务器]->[服务器设置]-> [REST API]
+```
+Enabled - REST API requests will be processed.
+Secret key auth - REST API authentication over specified secret key.
+Secret key: [xxxx] <= 输入`Secret key`，并且记住
+```
+
+
