@@ -10,9 +10,9 @@ services:
         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
         - POSTGRES_ROOT_PASSWORD=${POSTGRES_ROOT_PASSWORD}
     volumes:
-      - .docker-data/postgresql_data:/var/lib/postgresql/data
+      - ./docker-data/postgresql_data:/var/lib/postgresql/data
       - ./postgres/init.d:/docker-entrypoint-initdb.d
-      
+
   apacheds:
     build:
       context: ./apacheds
