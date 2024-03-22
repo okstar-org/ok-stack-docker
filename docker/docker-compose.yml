@@ -1,19 +1,6 @@
 version: "3"
 
 services:
-  # mysql_db:
-    # image: "mariadb:10.6.15"
-    # container_name: "db"
-    # ports:
-      # - "3306:3306"
-    # volumes:
-      # - /etc/timezone:/etc/timezone
-    #   - /etc/localtime:/etc/localtime
-    #   - ./mariadb/initdb.d:/docker-entrypoint-initdb.d
-    #   - ./docker-data/mariadb/data:/var/lib/mysql
-    # environment:
-    #   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-
   ok_db:
     image: postgres:latest
     ports:
@@ -24,7 +11,6 @@ services:
         - POSTGRES_ROOT_PASSWORD=${POSTGRES_ROOT_PASSWORD}
     volumes:
       - .docker-data/postgresql_data:/var/lib/postgresql/data
-
 
   apacheds:
     build:
@@ -50,7 +36,8 @@ services:
       - KC_PROXY_ADDRESS_FORWARDING=true
       - KC_PROXY=edge
       - KC_HTTP_ENABLED=true
-      - KC_HTTPS_PORT=443
+      - KC_HTTP_PORT=8080
+      - KC_HTTPS_PORT=8443
       - KC_HOSTNAME_STRICT_BACKCHANNEL=true
       - vertx.disableFileCaching=true
     volumes:
